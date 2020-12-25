@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\vs_ws\\SensorRead\\SensorRead.csproj": {}
+    "E:\\vs_ws\\SJBD.SensorRead\\SensorRead.csproj": {}
   },
   "projects": {
-    "E:\\vs_ws\\SensorRead\\SensorRead.csproj": {
+    "E:\\vs_ws\\SJBD.SensorRead\\SensorRead.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\vs_ws\\SensorRead\\SensorRead.csproj",
+        "projectUniqueName": "E:\\vs_ws\\SJBD.SensorRead\\SensorRead.csproj",
         "projectName": "SensorRead",
-        "projectPath": "E:\\vs_ws\\SensorRead\\SensorRead.csproj",
+        "projectPath": "E:\\vs_ws\\SJBD.SensorRead\\SensorRead.csproj",
         "packagesPath": "C:\\Users\\Constantine\\.nuget\\packages\\",
-        "outputPath": "E:\\vs_ws\\SensorRead\\obj\\",
+        "outputPath": "E:\\vs_ws\\SJBD.SensorRead\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Constantine\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,5 +1,5 @@
 {
-  "FilePath": "e:\\vs_ws\\DoorControl\\DoorControl.csproj",
+  "FilePath": "e:\\vs_ws\\SJBD.SensorRead\\SensorRead.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14389,7 +14389,7 @@
     ],
     "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "DoorControl",
+  "RootNamespace": "SensorRead",
   "Documents": [],
   "SerializationFormat": "0.2"
 }

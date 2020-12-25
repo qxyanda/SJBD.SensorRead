@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HYHJEiZhP78jfmTikyV8BLY1dpRXpM13ip9SNt1IvrRMqir7kDJF8Ld84wijvNL7GGMqFGIZ36L+tq6Pf0nvgA==",
+  "dgSpecHash": "V/cMQy1MHmARJfkJ/oj/eb2DIE34XTWlveT85mihRQfawI0Hpth0rSTkqtnJjt6/KoqSPKBr7UUwBE3uEaY8vg==",
   "success": true,
-  "projectFilePath": "E:\\vs_ws\\SensorRead\\SensorRead.csproj",
+  "projectFilePath": "E:\\vs_ws\\SJBD.SensorRead\\SensorRead.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Constantine\\.nuget\\packages\\easymodbustcp\\5.5.0\\easymodbustcp.5.5.0.nupkg.sha512",
     "C:\\Users\\Constantine\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
@@ -18,7 +18,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "已使用“.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8”而不是项目目标框架“.NETCoreApp,Version=v3.1”还原包“EasyModbusTCP 5.5.0”。此包可能与项目不完全兼容。",
+      "message": "Package 'EasyModbusTCP 5.5.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
       "libraryId": "EasyModbusTCP",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.1"

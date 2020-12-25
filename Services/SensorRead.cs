@@ -4,18 +4,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using EasyModbus;
 
-namespace DoorControl.Services
+namespace SensorRead.Services
 {
-    public class SensorRead
+    public class SensorDataRead
     {
-        string ip = "";
-        int port = 502;
+        public string retData="";
+        ModbusClient modbusClient = new ModbusClient();
+        public string ip = "172.17.0.100";
+        public int port = 502;
+        public int startingAddress=1;
+        public int quantity=45;
         public bool Connect()
         {
-            ModbusClient modbusClient = new ModbusClient();
-            modbusClient.IPAddress = ip;
-            modbusClient.Port = port;
-            return modbusClient.Connect();
+            modbusClient.Connect(ip,port);
+            if(modbusClient.Connected)
+            {
+                retData="Connected .";
+            }else
+            {
+                retData="Connection Failed .";
+            }
+            Console.WriteLine(retData);
+            return modbusClient.Connected;
+        }
+        public int[] Read()
+        {
+            int[] data=new int[quantity];
+            data=modbusClient.ReadInputRegisters(startingAddress, quantity);
+            Console.WriteLine(data.ToList());
+            return data;
         }
     }
 }
