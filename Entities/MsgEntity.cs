@@ -1,4 +1,4 @@
-namespace DoorControl.Entities
+namespace SensorRead.Entities
 {
     public class Msg
     {

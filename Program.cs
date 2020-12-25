@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace DoorControl
+namespace SensorRead
 {
     public class Program
     {
@@ -15,7 +15,7 @@ namespace DoorControl
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                    .UseUrls("http://*:5000;https://*:5001");
+                    .UseUrls("http://*:5002;https://*:5003");
                 });
     }
 }

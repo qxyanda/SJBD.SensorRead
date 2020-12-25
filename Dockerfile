@@ -9,16 +9,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
-COPY ["DoorControl.csproj", ""]
-RUN dotnet restore "./DoorControl.csproj"
+COPY ["SensorRead.csproj", ""]
+RUN dotnet restore "./SensorRead.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "DoorControl.csproj" -c Release -o /app/build
+RUN dotnet build "SensorRead.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "DoorControl.csproj" -c Release -o /app/publish
+RUN dotnet publish "SensorRead.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "DoorControl.dll"]
+ENTRYPOINT ["dotnet", "SensorRead.dll"]

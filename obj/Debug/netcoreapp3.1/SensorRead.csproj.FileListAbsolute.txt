@@ -11,7 +11,6 @@ E:\vs_ws\SJBD.SensorRead\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 E:\vs_ws\SJBD.SensorRead\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 E:\vs_ws\SJBD.SensorRead\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\vs_ws\SJBD.SensorRead\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-E:\vs_ws\SJBD.SensorRead\obj\Debug\netcoreapp3.1\SensorRead.csprojAssemblyReference.cache
 E:\vs_ws\SJBD.SensorRead\obj\Debug\netcoreapp3.1\SensorRead.AssemblyInfoInputs.cache
 E:\vs_ws\SJBD.SensorRead\obj\Debug\netcoreapp3.1\SensorRead.AssemblyInfo.cs
 E:\vs_ws\SJBD.SensorRead\obj\Debug\netcoreapp3.1\SensorRead.csproj.CoreCompileInputs.cache

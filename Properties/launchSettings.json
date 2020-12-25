@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "DoorControl": {
+    "SensorRead": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
