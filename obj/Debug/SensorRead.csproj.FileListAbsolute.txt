@@ -1,0 +1,12 @@
+E:\vs_ws\test\SensorRead\bin\Debug\SensorRead.exe.config
+E:\vs_ws\test\SensorRead\bin\Debug\SensorRead.exe
+E:\vs_ws\test\SensorRead\bin\Debug\SensorRead.pdb
+E:\vs_ws\test\SensorRead\obj\Debug\SensorRead.csprojAssemblyReference.cache
+E:\vs_ws\test\SensorRead\obj\Debug\SensorRead.Properties.Resources.resources
+E:\vs_ws\test\SensorRead\obj\Debug\SensorRead.csproj.GenerateResource.cache
+E:\vs_ws\test\SensorRead\obj\Debug\SensorRead.csproj.CoreCompileInputs.cache
+E:\vs_ws\test\SensorRead\obj\Debug\SensorRead.exe
+E:\vs_ws\test\SensorRead\obj\Debug\SensorRead.pdb
+E:\vs_ws\test\SensorRead\bin\Debug\EasyModbus.dll
+E:\vs_ws\test\SensorRead\obj\Debug\SensorRead.FormMain.resources
+E:\vs_ws\test\SensorRead\obj\Debug\SensorRead.csproj.CopyComplete
