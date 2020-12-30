@@ -7,10 +7,10 @@ namespace SJBD.SensorRead.Controllers
 
     public class SensorReadController
     {
-        public Msg GetData()
+        public SensorDataRead sensorDataRead = new SensorDataRead();
+        Msg msg = new Msg();
+        public int[] GetData()
         {
-            SensorDataRead sensorDataRead = new SensorDataRead();
-            Msg msg = new Msg();
             int[] sensorData = new int[sensorDataRead.quantity];
 
             if (sensorDataRead.Connect())
@@ -28,8 +28,25 @@ namespace SJBD.SensorRead.Controllers
             }
 
             Console.WriteLine(msg.data);
-            return msg;
+            return sensorData;
         }
+
+        public int[] GetData(bool isConnected)
+        {
+            int[] sensorData = new int[sensorDataRead.quantity];
+
+            if (isConnected)
+            {
+                msg.code = 200;
+                msg.msg = "成功";
+                sensorData = sensorDataRead.Read();
+                msg.data = sensorData.ToString();
+            }
+
+            Console.WriteLine(msg.data);
+            return sensorData;
+        }
+
 
     }
 }

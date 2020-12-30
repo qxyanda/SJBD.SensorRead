@@ -7,10 +7,10 @@ namespace SensorRead.Services
     public class SensorDataRead
     {
         public string retData = "";
-        ModbusClient modbusClient = new ModbusClient();
+        public ModbusClient modbusClient = new ModbusClient();
         public string ip = "172.17.0.100";
         public int port = 502;
-        public int startingAddress = 1;
+        public int startingAddress = 0;
         public int quantity = 45;
         public bool Connect()
         {
