@@ -15,7 +15,7 @@ namespace SensorRead
 {
     public partial class FormMain : Form
     {
-        String connetStr = "server=49.232.51.71;port=8400;user=root;password=root; database=baode;";
+        string connetStr = "server=49.232.51.71;port=8400;user=root;password=root; database=cam;";
         public FormMain()
         {
             InitializeComponent();
@@ -40,22 +40,22 @@ namespace SensorRead
             double[] dataDouble = new double[45];
             for(int i=0;i<45;i++)
             {
-                if (i == 0) dataDouble[i] = data[i] / 1;
-                if (i == 1) dataDouble[i] = data[i] / 1;
-                if (i == 2) dataDouble[i] = data[i] / 1;
-                if (i == 3) dataDouble[i] = data[i] / 1;
+                if (i == 0) dataDouble[i] = data[i] / 160 - 25;
+                if (i == 1) dataDouble[i] = data[i] / 160 - 25;
+                if (i == 2) dataDouble[i] = data[i] / 4000 - 1;
+                if (i == 3) dataDouble[i] = data[i] / 4000 - 1;
                 if (i == 4) dataDouble[i] = data[i] / 10;
                 if (i == 5) dataDouble[i] = data[i] / 10;
                 if (i == 6) dataDouble[i] = data[i] / 10;
                 if (i == 7) dataDouble[i] = data[i] / 10;
                 if (i == 8) dataDouble[i] = data[i] / 10;
                 if (i == 9) dataDouble[i] = data[i] / 10;
-                if (i == 10) dataDouble[i] = data[i] / 1;
+                if (i == 10) dataDouble[i] = data[i] / 160 - 25;
                 if (i == 11) dataDouble[i] = data[i] / 1;
                 if (i == 12) dataDouble[i] = data[i] / 10;
                 if (i == 13) dataDouble[i] = data[i] / 10;
-                if (i == 14) dataDouble[i] = data[i] / 1;
-                if (i == 15) dataDouble[i] = data[i] / 1;
+                if (i == 14) dataDouble[i] = data[i] / 4000 - 1;
+                if (i == 15) dataDouble[i] = data[i] / 4000 - 1;
                 if (i == 16) dataDouble[i] = data[i] / 10;
                 if (i == 17) dataDouble[i] = data[i] / 10;
                 if (i == 18) dataDouble[i] = data[i] / 10;

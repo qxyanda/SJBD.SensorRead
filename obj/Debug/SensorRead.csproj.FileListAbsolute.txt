@@ -45,4 +45,3 @@ E:\vs_ws\SJBD.SensorRead\bin\Debug\System.Buffers.xml
 E:\vs_ws\SJBD.SensorRead\bin\Debug\System.Memory.xml
 E:\vs_ws\SJBD.SensorRead\bin\Debug\System.Numerics.Vectors.xml
 E:\vs_ws\SJBD.SensorRead\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-E:\vs_ws\SJBD.SensorRead\obj\Debug\SensorRead.csprojAssemblyReference.cache
