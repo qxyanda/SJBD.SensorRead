@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Forms;
 using SensorRead.Entities;
 using SensorRead.Services;
 
@@ -11,7 +12,7 @@ namespace SJBD.SensorRead.Controllers
         Msg msg = new Msg();
         public int[] GetData()
         {
-            int[] sensorData = new int[sensorDataRead.quantity];
+            int[] sensorData = new int[sensorDataRead.quantity_30000 + sensorDataRead.quantity_40000];
 
             if (sensorDataRead.Connect())
             {
@@ -33,7 +34,7 @@ namespace SJBD.SensorRead.Controllers
 
         public int[] GetData(bool isConnected)
         {
-            int[] sensorData = new int[sensorDataRead.quantity];
+            int[] sensorData = new int[sensorDataRead.quantity_30000 + sensorDataRead.quantity_40000];
 
             if (isConnected)
             {

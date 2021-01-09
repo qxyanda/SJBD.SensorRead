@@ -32,40 +32,45 @@ namespace SensorRead
         public void Read()
         {
         ReRead:
+            
             MySqlConnection conn = new MySqlConnection(connetStr);
             string sql = "";
             string dataCombine = "";
 
             SensorReadController sensorReadController = new SensorReadController();
-            int[] data = sensorReadController.GetData();
-            double[] dataDouble = new double[45];
-            for (int i = 0; i < 45; i++)
+            int q = sensorReadController.sensorDataRead.quantity_30000 + sensorReadController.sensorDataRead.quantity_40000;
+            int[] data = new int[q];
+            double[] dataDouble = new double[q];
+
+            data = sensorReadController.GetData();
+
+            for (int i = 0; i < q; i++)
             {
-                if (i == 0) dataDouble[i] = (double)data[i] / 160 - 25;
-                if (i == 1) dataDouble[i] = (double)data[i] / 160 - 25;
-                if (i == 2) dataDouble[i] = (double)data[i] / 13107 - 1;
-                if (i == 3) dataDouble[i] = (double)data[i] / 13107 - 1;
+                if (i == 0) dataDouble[i] = (double)data[i] / 1;
+                if (i == 1) dataDouble[i] = (double)data[i] / 10;
+                if (i == 2) dataDouble[i] = (double)data[i] / 10;
+                if (i == 3) dataDouble[i] = (double)data[i] / 10;
                 if (i == 4) dataDouble[i] = (double)data[i] / 10;
                 if (i == 5) dataDouble[i] = (double)data[i] / 10;
                 if (i == 6) dataDouble[i] = (double)data[i] / 10;
                 if (i == 7) dataDouble[i] = (double)data[i] / 10;
-                if (i == 8) dataDouble[i] = (double)data[i] / 10;
-                if (i == 9) dataDouble[i] = (double)data[i] / 10;
-                if (i == 10) dataDouble[i] = (double)data[i] / 160 - 25;
-                if (i == 11) dataDouble[i] = (double)data[i] / 1;
+                if (i == 8) dataDouble[i] = (double)data[i] / 13107 - 1;
+                if (i == 9) dataDouble[i] = (double)data[i] / 13107 - 1;
+                if (i == 10) dataDouble[i] = (double)data[i] / 524.28 - 25;
+                if (i == 11) dataDouble[i] = (double)data[i] / 10;
                 if (i == 12) dataDouble[i] = (double)data[i] / 10;
                 if (i == 13) dataDouble[i] = (double)data[i] / 10;
-                if (i == 14) dataDouble[i] = (double)data[i] / 13107 - 1;
-                if (i == 15) dataDouble[i] = (double)data[i] / 13107 - 1;
+                if (i == 14) dataDouble[i] = (double)data[i] / 10;
+                if (i == 15) dataDouble[i] = (double)data[i] / 10;
                 if (i == 16) dataDouble[i] = (double)data[i] / 10;
                 if (i == 17) dataDouble[i] = (double)data[i] / 10;
                 if (i == 18) dataDouble[i] = (double)data[i] / 10;
                 if (i == 19) dataDouble[i] = (double)data[i] / 10;
                 if (i == 20) dataDouble[i] = (double)data[i] / 10;
                 if (i == 21) dataDouble[i] = (double)data[i] / 10;
-                if (i == 22) dataDouble[i] = (double)data[i] / 1;
-                if (i == 23) dataDouble[i] = (double)data[i] / 10;
-                if (i == 24) dataDouble[i] = (double)data[i] / 10;
+                if (i == 22) dataDouble[i] = (double)data[i] / 10;
+                if (i == 23) dataDouble[i] = (double)data[i] / 13107 - 1;
+                if (i == 24) dataDouble[i] = (double)data[i] / 13107 - 1;
                 if (i == 25) dataDouble[i] = (double)data[i] / 10;
                 if (i == 26) dataDouble[i] = (double)data[i] / 10;
                 if (i == 27) dataDouble[i] = (double)data[i] / 1;
@@ -84,19 +89,18 @@ namespace SensorRead
                 if (i == 40) dataDouble[i] = (double)data[i] / 10;
                 if (i == 41) dataDouble[i] = (double)data[i] / 10;
                 if (i == 42) dataDouble[i] = (double)data[i] / 10;
-                if (i == 43) dataDouble[i] = (double)data[i] / 10;
-                if (i == 44) dataDouble[i] = (double)data[i] / 10;
             }
 
             DataShow(data);
 
-            while (btn_Stop.Enabled)
+            while (btn_Stop.Enabled)//
             {
+                
                 try
                 {
                     sql = "UPDATE t_monitor_probe_gai SET register_data = (CASE data_address";
                     dataCombine = "";
-                    for (int i = 0; i < 45; i++)
+                    for (int i = 0; i < q; i++)
                     {
                         dataCombine += " WHEN ";
                         dataCombine += i;
@@ -106,10 +110,12 @@ namespace SensorRead
 
                     sql += dataCombine;
                     sql += " END )";
+
                     SqlEx(conn, sql);
 
                     Thread.Sleep(500);
                     tb_Msg.Clear();
+                    
                     if (btn_Stop.Enabled == false) break;
                     data = sensorReadController.GetData(btn_Stop.Enabled);
 
@@ -118,6 +124,7 @@ namespace SensorRead
                     //tb_Msg.Text = sql;
                 }
                 catch { goto ReRead; }
+                
             }
             sensorReadController.sensorDataRead.modbusClient.Disconnect();
             btn_Stop.Enabled = false;
