@@ -15,7 +15,8 @@ namespace SensorRead
 {
     public partial class FormMain : Form
     {
-        string connetStr = "server=49.232.51.71;port=8400;user=root;password=root; database=cam;";
+        public string connectStr = "server=49.232.51.71;port=8400;user=root;password=root; database=cam;";
+        
         public FormMain()
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace SensorRead
 
         private void btn_Read_Click(object sender, EventArgs e)
         {
+            connectStr = cbConnect.SelectedItem.ToString();
             btn_Read.Enabled = false;
             btn_Stop.Enabled = true;
             Thread th = new Thread(new ThreadStart(Read));
@@ -33,7 +35,7 @@ namespace SensorRead
         {
         ReRead:
             
-            MySqlConnection conn = new MySqlConnection(connetStr);
+            MySqlConnection conn = new MySqlConnection(connectStr);
             string sql = "";
             string dataCombine = "";
 
@@ -158,7 +160,7 @@ namespace SensorRead
 
         private void btn_test_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = new MySqlConnection(connetStr);
+            MySqlConnection conn = new MySqlConnection(connectStr);
             string sql = "";
             sql = "UPDATE t_monitor_probe_gai SET register_data = (CASE data_address WHEN 3 THEN '2' WHEN 2 THEN '3' END )";
             SqlEx(conn, sql);
@@ -166,6 +168,7 @@ namespace SensorRead
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            cbConnect.SelectedIndex = 0;
             btn_test.Visible = false;
             btn_Stop.Enabled = false;
         }
