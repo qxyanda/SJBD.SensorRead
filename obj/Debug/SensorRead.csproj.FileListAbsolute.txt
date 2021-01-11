@@ -80,4 +80,3 @@ D:\Documents\GitHub\SJBD.SensorRead\obj\Debug\SensorRead.csproj.CoreCompileInput
 D:\Documents\GitHub\SJBD.SensorRead\obj\Debug\SensorRead.csproj.CopyComplete
 D:\Documents\GitHub\SJBD.SensorRead\obj\Debug\SensorRead.exe
 D:\Documents\GitHub\SJBD.SensorRead\obj\Debug\SensorRead.pdb
-E:\vs_ws\SJBD.SensorRead\obj\Debug\SensorRead.csprojAssemblyReference.cache

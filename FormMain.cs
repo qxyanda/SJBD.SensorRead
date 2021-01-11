@@ -57,7 +57,7 @@ namespace SensorRead
                 if (i == 6) dataDouble[i] = (double)data[i] / 10;
                 if (i == 7) dataDouble[i] = (double)data[i] / 13107 - 1;
                 if (i == 8) dataDouble[i] = (double)data[i] / 13107 - 1;
-                if (i == 9) dataDouble[i] = (double)data[i] / 524.28 - 25;
+                if (i == 9) dataDouble[i] = ((double)data[i] / 524.28 - 25) * 0.771;
                 if (i == 10) dataDouble[i] = (double)data[i] / 10;
                 if (i == 11) dataDouble[i] = (double)data[i] / 10;
                 if (i == 12) dataDouble[i] = (double)data[i] / 10;
@@ -83,14 +83,14 @@ namespace SensorRead
                 if (i == 32) dataDouble[i] = (double)data[i] / 10;
                 if (i == 33) dataDouble[i] = (double)data[i] ;
                 if (i == 34) dataDouble[i] = (double)data[i] ;
-                if (i == 35) dataDouble[i] = (double)data[i] / 10;
-                if (i == 36) dataDouble[i] = (double)data[i] / 10;
-                if (i == 37) dataDouble[i] = (double)data[i] / 10;
-                if (i == 38) dataDouble[i] = (double)data[i] / 10;
-                if (i == 39) dataDouble[i] = (double)data[i] / 10;
-                if (i == 40) dataDouble[i] = (double)data[i] / 10;
-                if (i == 41) dataDouble[i] = (double)data[i] / 10;
-                if (i == 42) dataDouble[i] = (double)data[i] / 10;
+                if (i == 35) dataDouble[i] = (double)data[i] / 65535 * 1000;
+                if (i == 36) dataDouble[i] = (double)data[i] / 65535 * 1000;
+                if (i == 37) dataDouble[i] = (double)data[i] / 65535 * 1000;
+                if (i == 38) dataDouble[i] = (double)data[i] / 65535 * 1000;
+                if (i == 39) dataDouble[i] = (double)data[i] / 65535 * 1000;
+                if (i == 40) dataDouble[i] = (double)data[i] / 65535 * 1000;
+                if (i == 41) dataDouble[i] = (double)data[i] / 65535 * 1000;
+                if (i == 42) dataDouble[i] = (double)data[i] / 65535 * 1000;
             }
 
             DataShow(data);
@@ -112,7 +112,7 @@ namespace SensorRead
                             dataCombine += dataDouble[i].ToString("F0");
                         }
                         else {
-                            dataCombine += dataDouble[i].ToString("F4");
+                            dataCombine += dataDouble[i].ToString("F3");
                         }
                         
                     }
