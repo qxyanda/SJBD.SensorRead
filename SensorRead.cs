@@ -14,7 +14,7 @@ namespace SensorRead.Services
         public int port = 502;
         public int startingAddress = 0;
         public int quantity_30000 = 33;
-        public int quantity_40000 = 10;
+        public int quantity_40000 = 18;
         public bool Connect()
         {
             modbusClient.Connect(ip, port);
