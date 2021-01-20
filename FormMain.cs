@@ -34,167 +34,51 @@ namespace SensorRead
         public void Read()
         {
         ReRead:
-            
-            MySqlConnection conn = new MySqlConnection(connectStr);
-            string sql = "";
-            string dataCombine = "";
 
-            SensorReadController sensorReadController = new SensorReadController();
-            int q = sensorReadController.sensorDataRead.quantity_30000 + sensorReadController.sensorDataRead.quantity_40000;
-            int[] data = new int[q];
-            string[] dataDouble = new string[q];
+                MySqlConnection conn = new MySqlConnection(connectStr);
+                string sql = "";
+                string dataCombine = "";
 
-            data = sensorReadController.GetData();
-
-            for (int i = 0; i < q; i++)
+                SensorReadController sensorReadController = new SensorReadController();
+                int q = sensorReadController.sensorDataRead.quantity_30000 + sensorReadController.sensorDataRead.quantity_40000;
+                int[] data = new int[q];
+                string[] dataDouble = new string[q];
+            try
             {
-                if (i == 0) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 1) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 2) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 3) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 4) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 5) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 6) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 7) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
-                if (i == 8) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
-                if (i == 9) dataDouble[i] = (((double)data[i] / 524.28 - 25) * 0.771).ToString("F4");
-                if (i == 10) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 11) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 12) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 13) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 14) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 15) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 16) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 17) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 18) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 19) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 20) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 21) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
-                if (i == 22) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
-                if (i == 23) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 24) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 25) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 26) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 27) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 28) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 29) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 30) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 31) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 32) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 33) dataDouble[i] = ((double)data[i] ).ToString("F0");
-                if (i == 34) dataDouble[i] = ((double)data[i] ).ToString("F0");
-                if (i == 35) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 36) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 37) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 38) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 39) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 40) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 41) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 42) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 43) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 44) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 45) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 46) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 47) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 48) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 49) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                if (i == 50) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                data = sensorReadController.GetData();
+                DataHandle(dataDouble, data, q);
+                sql = SqlMake(dataCombine, dataDouble, conn, q);
+
+                tb_Msg.Clear();
+                tb_Msg.AppendText("Retrying...");
+                TbShow(sql, data);
             }
-            tb_Msg.AppendText("Retrying...");
-            tb_Msg.AppendText("\r\n");
-            DataShow(data);
-            tb_Msg.AppendText("\r\n");
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+                goto ReRead;
+            }
 
             while (btn_Stop.Enabled)//
             {
+                if (btn_Stop.Enabled == false) break;
+                Thread.Sleep(500);
                 try
                 {
-                    sql = "UPDATE t_monitor_probe_gai SET register_data = (CASE data_address";
-                    dataCombine = "";
-                    for (int i = 0; i < q; i++)
-                    {
-                        dataCombine += " WHEN ";
-                        dataCombine += i;
-                        dataCombine += " THEN ";
-                        dataCombine += dataDouble[i];   
-                    }
-
-                    sql += dataCombine;
-                    sql += " END )";
-
-                    SqlEx(conn, sql);
-
-                    Thread.Sleep(500);
-                    
-                    if (btn_Stop.Enabled == false) break;
                     data = sensorReadController.GetData(btn_Stop.Enabled);
-
-                    for (int i = 0; i < q; i++)
-                    {
-                        if (i == 0) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 1) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 2) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 3) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 4) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 5) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 6) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 7) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
-                        if (i == 8) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
-                        if (i == 9) dataDouble[i] = (((double)data[i] / 524.28 - 25) * 0.771).ToString("F4");
-                        if (i == 10) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 11) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 12) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 13) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 14) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 15) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 16) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 17) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 18) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 19) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 20) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 21) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
-                        if (i == 22) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
-                        if (i == 23) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 24) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 25) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 26) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 27) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 28) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 29) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 30) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 31) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 32) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 33) dataDouble[i] = ((double)data[i]).ToString("F0");
-                        if (i == 34) dataDouble[i] = ((double)data[i]).ToString("F0");
-                        if (i == 35) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 36) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 37) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 38) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 39) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 40) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 41) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 42) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 43) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 44) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 45) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 46) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 47) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 48) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 49) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                        if (i == 50) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
-                    }
+                    DataHandle(dataDouble,data,q);
+                    sql = SqlMake(dataCombine, dataDouble, conn, q);
 
                     tb_Msg.Clear();
                     tb_Msg.AppendText("Continue...");
-                    tb_Msg.AppendText("\r\n");
-                    tb_Msg.AppendText(sql);
-                    tb_Msg.AppendText("\r\n");
-                    tb_Msg.AppendText("\r\n");
-                    DataShow(data);
+                    TbShow(sql, data);
 
-                    //tb_Msg.Text = sql;
                 }
-                catch { goto ReRead; }
+                catch (MySqlException e)
+                {
+                    MessageBox.Show(e.Message);
+                    goto ReRead; 
+                }
                 
             }
             sensorReadController.sensorDataRead.modbusClient.Disconnect();
@@ -249,6 +133,91 @@ namespace SensorRead
                 tb_Msg.AppendText(sensor + ",");
             }
             tb_Msg.AppendText("\r\n");
+        }
+
+        private void DataHandle(string[] dataDouble,int[] data,int q)
+        {
+            for (int i = 0; i < q; i++)
+            {
+                if (i == 0) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 1) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 2) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 3) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 4) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 5) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 6) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 7) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
+                if (i == 8) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
+                if (i == 9) dataDouble[i] = (((double)data[i] / 524.28 - 25) * 0.771).ToString("F4");
+                if (i == 10) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 11) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 12) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 13) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 14) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 15) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 16) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 17) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 18) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 19) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 20) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 21) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
+                if (i == 22) dataDouble[i] = ((double)data[i] / 13107 - 1).ToString("F4");
+                if (i == 23) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 24) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 25) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 26) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 27) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 28) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 29) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 30) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 31) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 32) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 33) dataDouble[i] = ((double)data[i]).ToString("F0");
+                if (i == 34) dataDouble[i] = ((double)data[i]).ToString("F0");
+                if (i == 35) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 36) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 37) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 38) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 39) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 40) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 41) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 42) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 43) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 44) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 45) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 46) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 47) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 48) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 49) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+                if (i == 50) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
+            }
+        }
+        private string SqlMake(string dataCombine,string[] dataDouble, MySqlConnection conn,int q)
+        {
+            string sql = "UPDATE t_monitor_probe_gai SET register_data = (CASE data_address";
+            dataCombine = "";
+            for (int i = 0; i < q; i++)
+            {
+                dataCombine += " WHEN ";
+                dataCombine += i;
+                dataCombine += " THEN ";
+                dataCombine += dataDouble[i];
+            }
+
+            sql += dataCombine;
+            sql += " END )";
+
+            SqlEx(conn, sql);
+            return sql;
+        }
+
+        private void TbShow(string sql, int[] data)
+        {
+            tb_Msg.AppendText("\r\n");
+            tb_Msg.AppendText(sql);
+            tb_Msg.AppendText("\r\n");
+            tb_Msg.AppendText("\r\n");
+            DataShow(data);
         }
     }
 }
