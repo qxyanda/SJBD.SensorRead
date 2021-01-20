@@ -20,6 +20,9 @@ namespace SensorRead
         public FormMain()
         {
             InitializeComponent();
+            Log.Info("启动成功");
+            Log.Error("启动成功","ww");
+            //MessageBox.Show("qi");
         }
 
         private void btn_Read_Click(object sender, EventArgs e)
@@ -55,7 +58,7 @@ namespace SensorRead
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.Message);
+                Log.Info($"{e}");
                 goto ReRead;
             }
 
@@ -74,9 +77,9 @@ namespace SensorRead
                     TbShow(sql, data);
 
                 }
-                catch (MySqlException e)
+                catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
+                    Log.Info($"{e}");
                     goto ReRead; 
                 }
                 
