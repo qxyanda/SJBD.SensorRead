@@ -34,6 +34,7 @@ namespace SensorRead
             this.btn_Stop = new System.Windows.Forms.Button();
             this.btn_test = new System.Windows.Forms.Button();
             this.cbConnect = new System.Windows.Forms.ComboBox();
+            this.textBoxError = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_Read
@@ -54,7 +55,7 @@ namespace SensorRead
             this.tb_Msg.Multiline = true;
             this.tb_Msg.Name = "tb_Msg";
             this.tb_Msg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb_Msg.Size = new System.Drawing.Size(1191, 382);
+            this.tb_Msg.Size = new System.Drawing.Size(1191, 181);
             this.tb_Msg.TabIndex = 1;
             // 
             // btn_Stop
@@ -86,16 +87,27 @@ namespace SensorRead
             "server=10.37.1.113;port=3306;user=root;password=root; database=cam;",
             "server=49.232.51.71;port=8400;user=root;password=root; database=cam;"});
             this.cbConnect.Location = new System.Drawing.Point(512, 16);
-            this.cbConnect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbConnect.Margin = new System.Windows.Forms.Padding(4);
             this.cbConnect.Name = "cbConnect";
             this.cbConnect.Size = new System.Drawing.Size(685, 23);
             this.cbConnect.TabIndex = 4;
+            // 
+            // textBoxError
+            // 
+            this.textBoxError.Location = new System.Drawing.Point(13, 241);
+            this.textBoxError.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxError.Multiline = true;
+            this.textBoxError.Name = "textBoxError";
+            this.textBoxError.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxError.Size = new System.Drawing.Size(1191, 198);
+            this.textBoxError.TabIndex = 5;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 450);
+            this.Controls.Add(this.textBoxError);
             this.Controls.Add(this.cbConnect);
             this.Controls.Add(this.btn_test);
             this.Controls.Add(this.btn_Stop);
@@ -117,6 +129,7 @@ namespace SensorRead
         private System.Windows.Forms.Button btn_Stop;
         private System.Windows.Forms.Button btn_test;
         private System.Windows.Forms.ComboBox cbConnect;
+        private System.Windows.Forms.TextBox textBoxError;
     }
 }
 

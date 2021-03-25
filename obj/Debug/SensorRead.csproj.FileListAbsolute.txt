@@ -82,3 +82,4 @@ D:\Documents\GitHub\SJBD.SensorRead\obj\Debug\SensorRead.exe
 D:\Documents\GitHub\SJBD.SensorRead\obj\Debug\SensorRead.pdb
 E:\vs_ws\SJBD.SensorRead\bin\Debug\log4net.dll
 E:\vs_ws\SJBD.SensorRead\bin\Debug\log4net.xml
+E:\vs_ws\SJBD.SensorRead\obj\Debug\SensorRead.csprojAssemblyReference.cache
