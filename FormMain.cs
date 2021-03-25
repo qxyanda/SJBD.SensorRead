@@ -195,9 +195,13 @@ namespace SensorRead
                 if (i == 50) dataDouble[i] = ((double)data[i] / 10).ToString("F1");
             }
         }
+        string lastSql = "";
+        string sql = "";
         private string SqlMake(string dataCombine,string[] dataDouble, MySqlConnection conn,int q)
         {
-            string sql = "UPDATE t_monitor_probe SET register_data = (CASE data_address";
+            if(!string.IsNullOrEmpty(sql))
+            lastSql = sql;
+            sql = "UPDATE t_monitor_probe SET register_data = (CASE data_address";
             dataCombine = "";
             for (int i = 0; i < q; i++)
             {
@@ -207,7 +211,7 @@ namespace SensorRead
                 dataCombine += dataDouble[i];
                 if (double.Parse(dataDouble[i]) == 0)
                 {
-                    if (i != 7 && i != 8 && i != 21 && i != 22 && i < 33)
+                    if (i != 2 && i != 7 && i != 8 && i != 9 && i != 10 && i != 11 && i != 12 && i != 21 && i != 22 && i < 33)
                         textBoxError.AppendText(DateTime.Now.ToString()+":["+i.ToString()+"]:"+ dataDouble[i]+"\r\n");
                 }
             }
@@ -220,14 +224,20 @@ namespace SensorRead
             {
                 if(double.Parse(dataDouble[i]) == 0)
                 {
-                    if (i != 7 && i != 8 && i != 21 && i != 22 && i < 33)
+                    if (i != 2 && i != 7 && i != 8 && i != 9 && i != 10 && i != 11 && i != 12 && i != 21 && i != 22 && i < 33)
                         isNotNull = true;
                     break;
                 }
             }
-            if(!isNotNull)
+            //test
+            //SqlEx(conn, sql);
+            if (!isNotNull)
             {
                 SqlEx(conn, sql);
+            }
+            else
+            {
+                SqlEx(conn, lastSql);
             }
             
             return sql;
