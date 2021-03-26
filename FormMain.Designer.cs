@@ -55,7 +55,7 @@ namespace SensorRead
             this.tb_Msg.Multiline = true;
             this.tb_Msg.Name = "tb_Msg";
             this.tb_Msg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb_Msg.Size = new System.Drawing.Size(1191, 181);
+            this.tb_Msg.Size = new System.Drawing.Size(1191, 246);
             this.tb_Msg.TabIndex = 1;
             // 
             // btn_Stop
@@ -94,7 +94,7 @@ namespace SensorRead
             // 
             // textBoxError
             // 
-            this.textBoxError.Location = new System.Drawing.Point(13, 241);
+            this.textBoxError.Location = new System.Drawing.Point(13, 306);
             this.textBoxError.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxError.Multiline = true;
             this.textBoxError.Name = "textBoxError";
@@ -106,7 +106,7 @@ namespace SensorRead
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1215, 450);
+            this.ClientSize = new System.Drawing.Size(1215, 515);
             this.Controls.Add(this.textBoxError);
             this.Controls.Add(this.cbConnect);
             this.Controls.Add(this.btn_test);
